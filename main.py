@@ -105,7 +105,20 @@ def main():
     word_count_plt.plot()
     plt.xlabel('Number of Words')
     plt.ylabel('Authors')
+    plt.title("Word count by author")
     plt.show()
+
+    # Plot word count frequency
+    plt.figure()
+    word_count_freq = df['Word_Count'].value_counts()
+    word_count_freq = word_count_freq.head(40) # Focus on top 40 only
+    word_count_freq_plt = word_count_freq.plot.bar()
+    word_count_freq_plt.plot()
+    plt.xlabel('Word Count')
+    plt.ylabel('Frequency')
+    plt.title("Word count frequency")
+    plt.show()
+
 
 if __name__ == '__main__':
     main()
