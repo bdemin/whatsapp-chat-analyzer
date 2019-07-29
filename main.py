@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 def is_datetime_pattern(s):
     # mm/dd/yyyy, hh:mm -
-    pattern = '^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)(\d{2}|\d{4}), ([0-9][0-9]):([0-9][0-9]) -'
+    pattern = '^([0-2][0-9]|[0-9])(\/)(((0)[0-9])|((1)[0-2]))(\/)(\d{2}|\d{4}), ([0-9][0-9]):([0-9][0-9]) -'
     result = re.match(pattern, s)
     if result:
         return True
@@ -82,5 +82,7 @@ def main():
     plt.title("Number of WhatsApp messages")
     plt.show()
 
+
 if __name__ == '__main__':
     main()
+    
