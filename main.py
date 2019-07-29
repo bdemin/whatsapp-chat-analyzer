@@ -82,7 +82,15 @@ def main():
     plt.title("Number of WhatsApp messages")
     plt.show()
 
+    # Media messages
+    media_messages_df = df[df['Message'] == '<Media omitted>']
+
+    author_media_counts = media_messages_df['Author'].value_counts()
+    media_author_plt = author_media_counts.plot.barh()
+    media_author_plt.plot()
+    plt.title("Number of WhatsApp media messages")
+    plt.show()
+
 
 if __name__ == '__main__':
     main()
-    
