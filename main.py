@@ -39,7 +39,6 @@ def get_message_data(line):
         author = None
     return date, time, author, message
 
-
 def parse_data(path):
     parsed_data = []
     with open(path, encoding = "utf-8") as fp:
@@ -59,5 +58,17 @@ def parse_data(path):
                 message_buffer.append(message)
             else:
                 message_buffer.append(line) # Continue message from previous lines
+
     print('Parsing done')
     return parsed_data
+
+
+def main():
+    path = 'ts_chat.txt' # WhatsApp data file
+    parsed_data = parse_data(path)
+    df = pd.DataFrame(parsed_data, columns=['Date', 'Time', 'Author', 'Message'])
+    df.head()
+
+
+if __name__ == '__main__':
+    main()
