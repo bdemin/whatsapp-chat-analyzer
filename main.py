@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import re
+import os
 
 import matplotlib.pyplot as plt
 
@@ -66,7 +67,12 @@ def parse_data(path):
 
 
 def main():
-    path = 'ts_chat.txt' # WhatsApp data file
+    files = []
+    for file in os.listdir():
+        if file.endswith(".txt"):
+            files.append(file)
+
+    path = files[1] # WhatsApp data file
     parsed_data = parse_data(path)
 
     # Initialize Pandas df
