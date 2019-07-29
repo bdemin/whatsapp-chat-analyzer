@@ -119,6 +119,22 @@ def main():
     plt.title("Word count frequency")
     plt.show()
 
+    # Plot top 10 busiest dates
+    busy_dates_plt = df['Date'].value_counts().head(10).plot.barh()
+    busy_dates_plt.plot()
+    plt.xlabel('Number of Messages')
+    plt.ylabel('Date')
+    plt.title("Word count frequency")
+    plt.show()
+
+    # Plot top 10 busiest times of the day
+    busy_time_plt = df['Time'].value_counts().head(10).plot.barh() # Top 10 Times of the day at which the most number of messages were sent
+    busy_time_plt.plot()
+    plt.xlabel('Number of messages')
+    plt.ylabel('Time')
+    plt.title("Word count frequency")
+    plt.show()
+
 
 if __name__ == '__main__':
     main()
