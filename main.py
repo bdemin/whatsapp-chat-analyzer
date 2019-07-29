@@ -73,24 +73,33 @@ def main():
     df = pd.DataFrame(parsed_data, columns=['Date', 'Time', 'Author', 'Message'])
     df.head()
 
-    # Count number of messages per author
+    # Count and plot number of messages per author
     author_value_counts = df['Author'].value_counts()
     messages_author_plt = author_value_counts.plot.barh() # Create a Pandas bar chart
-
-    # Plot   
     messages_author_plt.plot()
     plt.title("Number of WhatsApp messages")
     plt.show()
 
-    # Media messages
+    # Count and plot media messages per author
     media_messages_df = df[df['Message'] == '<Media omitted>']
-
     author_media_counts = media_messages_df['Author'].value_counts()
     media_author_plt = author_media_counts.plot.barh()
     media_author_plt.plot()
     plt.title("Number of WhatsApp media messages")
     plt.show()
 
+    # Add fields to df - letter count and word count
+    df['Letter_Count'] = df['Message'].apply(lambda s : len(s))
+    df['Word_Count'] = df['Message'].apply(lambda s : len(s.split(' ')))
+
+    # Plot word count by author
+    word_count_by_author = df[['Author', 'Word_Count']].groupby('Author').sum()
+    word_count_by_author = word_count_by_author.sort_values('Word_Count', ascending=False) # Sort
+    word_count_plt = word_count_by_author.plot.barh()
+    word_count_plt.plot()
+    plt.xlabel('Number of Words')
+    plt.ylabel('Authors')
+    plt.show()
 
 if __name__ == '__main__':
     main()
