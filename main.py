@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import re
 
+import matplotlib.pyplot as plt
+
 
 def is_datetime_pattern(s):
     # mm/dd/yyyy, hh:mm -
@@ -66,9 +68,19 @@ def parse_data(path):
 def main():
     path = 'ts_chat.txt' # WhatsApp data file
     parsed_data = parse_data(path)
+
+    # Initialize Pandas df
     df = pd.DataFrame(parsed_data, columns=['Date', 'Time', 'Author', 'Message'])
     df.head()
 
+    # Count number of messages per author
+    author_value_counts = df['Author'].value_counts()
+    messages_author_plt = author_value_counts.plot.barh() # Create a Pandas bar chart
+
+    # Plot   
+    messages_author_plt.plot()
+    plt.title("Number of WhatsApp messages")
+    plt.show()
 
 if __name__ == '__main__':
     main()
