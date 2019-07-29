@@ -22,3 +22,19 @@ def is_author(s):
     if result:
         return True
     return False
+
+def get_message_data(line):
+    split_line = line.split(' - ') # Split datetime from message
+
+    datetime = split_line[0]
+    date, time = datetime.split(', ')
+    
+    message = ' '.join(split_line[1:])
+    
+    if is_author(message): # Split message from author
+        split_message = message.split(': ')
+        author = split_message[0]
+        message = ' '.join(split_message[1:])
+    else:
+        author = None
+    return date, time, author, message
