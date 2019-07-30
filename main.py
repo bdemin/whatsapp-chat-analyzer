@@ -139,6 +139,22 @@ def main():
     plt.ylabel('Time')
     plt.show()
 
+    # Plot word count frequency for a specific author
+    author = input('Type author name: \n')
+    author_filter = df['Author'] == author
+    author_df = df[author_filter] # Filter by author
+    if author_df.empty:
+        print('Author not found!')
+        return
+    word_count_freq_author = author_df['Word_Count'].value_counts() # Calculate word counts
+    word_count_freq_author = word_count_freq_author.head(40) # Focus on top 40
+    word_count_freq_author_plt = word_count_freq_author.plot.bar()
+    word_count_freq_author_plt.plot()
+    plt.title('Word count frequency for %s' %author)
+    plt.xlabel('Word Count')
+    plt.ylabel('Frequency')
+    plt.show()
+
 
 if __name__ == '__main__':
     main()
