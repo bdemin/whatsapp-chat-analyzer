@@ -120,7 +120,7 @@ def main():
     word_count_freq_plt.plot()
     plt.title('Word count frequency')
     plt.xlabel('Word Count')
-    plt.ylabel('Frequency')
+    plt.ylabel('Number of messages')
     plt.show()
 
     # Plot top 10 busiest dates
@@ -152,7 +152,7 @@ def main():
     word_count_freq_author_plt.plot()
     plt.title('Word count frequency for %s' %author)
     plt.xlabel('Word Count')
-    plt.ylabel('Frequency')
+    plt.ylabel('Number of messages')
     plt.show()
 
 
