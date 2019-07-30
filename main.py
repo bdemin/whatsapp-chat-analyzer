@@ -83,7 +83,9 @@ def main():
     author_value_counts = df['Author'].value_counts()
     messages_author_plt = author_value_counts.plot.barh() # Create a Pandas bar chart
     messages_author_plt.plot()
-    plt.title("Number of WhatsApp messages")
+    plt.title('Number of WhatsApp messages per author')
+    plt.xlabel('Number of messages')
+    plt.ylabel(path.split('.')[0])
     plt.show()
 
     # Count and plot media messages per author
@@ -91,7 +93,9 @@ def main():
     author_media_counts = media_messages_df['Author'].value_counts()
     media_author_plt = author_media_counts.plot.barh()
     media_author_plt.plot()
-    plt.title("Number of WhatsApp media messages")
+    plt.title("Number of WhatsApp media messages per author")
+    plt.xlabel('Number of media messages')
+    plt.ylabel(path.split('.')[0])
     plt.show()
 
     # Add fields to df - letter count and word count
@@ -103,9 +107,9 @@ def main():
     word_count_by_author = word_count_by_author.sort_values('Word_Count', ascending=False) # Sort
     word_count_plt = word_count_by_author.plot.barh()
     word_count_plt.plot()
+    plt.title('Word count by author')
     plt.xlabel('Number of Words')
-    plt.ylabel('Authors')
-    plt.title("Word count by author")
+    plt.ylabel(path.split('.')[0])
     plt.show()
 
     # Plot word count frequency
@@ -114,25 +118,25 @@ def main():
     word_count_freq = word_count_freq.head(40) # Focus on top 40 only
     word_count_freq_plt = word_count_freq.plot.bar()
     word_count_freq_plt.plot()
+    plt.title('Word count frequency')
     plt.xlabel('Word Count')
     plt.ylabel('Frequency')
-    plt.title("Word count frequency")
     plt.show()
 
     # Plot top 10 busiest dates
     busy_dates_plt = df['Date'].value_counts().head(10).plot.barh()
     busy_dates_plt.plot()
+    plt.title('Word count frequency')
     plt.xlabel('Number of Messages')
     plt.ylabel('Date')
-    plt.title("Word count frequency")
     plt.show()
 
     # Plot top 10 busiest times of the day
     busy_time_plt = df['Time'].value_counts().head(10).plot.barh() # Top 10 Times of the day at which the most number of messages were sent
     busy_time_plt.plot()
+    plt.title('Word count frequency')
     plt.xlabel('Number of messages')
     plt.ylabel('Time')
-    plt.title("Word count frequency")
     plt.show()
 
 
